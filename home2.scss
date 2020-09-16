@@ -1,0 +1,536 @@
+$grey: rgb(44, 44, 44);
+$l-grey: $grey + 20;
+$d-grey: $grey - 20;
+//$glow: rgb(102, 255, 0);
+$glow : rgb(69, 243, 0);
+$glow-active: rgb(253, 195, 4);
+
+@mixin boxes {
+}
+
+// whole
+
+
+
+html {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  color: white;
+  // overflow-y: auto;
+  // overflow-x: hidden;
+
+  //background:url(wallpaper.jpg) no-repeat center center fixed;
+  // opacity: 100%;
+  // -webkit-background-size:cover;
+  // -o-background-size:cover;
+  // -moz-background-size:cover;
+  //  background-size:cover;
+}
+
+// the navigation bar
+.contain {
+  @extend html;
+
+  width: 100%;
+  height: 10%;
+  font-family: "Stencil", "Times New Roman", Times, serif;
+
+  @media only screen and (max-width: 100rem) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
+  }
+}
+
+#bar {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  //flex-wrap: nowrap;
+}
+
+
+
+
+#find {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  position: relative;
+  width:4vw;
+  height: 1vw;
+  color:$glow;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  margin: 4px;
+  padding: 4px;
+  min-width: 50vw;
+ // color: $glow;
+}
+
+
+.search-icon {
+  position: absolute;
+  top: 0.1vw;
+  left: 8px;
+  bottom: 190vw;
+  width: 1vw;
+  height: 1vw;
+  //background-color: red;
+  padding : 0.5vw;
+  color: $glow;
+}
+.search-icon:hover{
+  color : $glow;
+  text-shadow:  0px 0px 20px $glow, 2.5px 2.5px 40px $glow,2.5px 2.5px 80px $glow;
+}
+.search {
+  border: 0.1vw solid black;
+  color: $glow; 
+  border-radius: 3vw;
+  height: 1.7vw;
+  width: 100%;
+  padding: 2px 23px 2px 40px;
+  outline: 0;
+  background-color: transparent;
+  font-size: 1.5vw;
+  -webkit-box-shadow: 0 8px 6px -6px $glow-active;
+	   -moz-box-shadow: 0 8px 6px -6px $glow-active;
+	        box-shadow: 0 8px 6px -6px $glow-active;
+}
+.search:hover {
+  color: $glow;
+  box-shadow: 0px 0px 5px $glow, 0px 0px 5px $glow, 0px 0px 5px $glow;
+}
+
+.search:active {
+  box-shadow: 0px 0px 20px $glow-active, 0px 0px 20px $glow-active, 0px 0px 20px $glow-active;
+}
+
+
+
+.clear-icon {
+  //background-color:red;
+  position: absolute;
+  top: 0.5vw;
+  left: 45.3vw;
+  width: 3.5vw;
+  height: 1.9vw;
+  padding-left: 1.8vw;
+  padding-top: 0.4vw;
+  cursor: pointer;
+  color: black;
+  background-image:radial-gradient($glow,black);
+  border-radius: 3vw;
+  //transition: all 0.1s ease-in-out;
+  //visibility : hidden;
+}
+.clear-icon:hover {
+  color : white;
+  //box-shadow: 0px 0px 10px $glow, 1.25px 1.25px 20px $glow,1.25px 1.25px 40px $glow;
+}
+
+.clear-icon:active {
+  text-shadow: 0px 0px 20px $glow, 2.5px 2.5px 40px $glow,2.5px 2.5px 80px $glow;
+}
+
+
+
+
+
+.sidebar {
+  position: fixed;
+  left: -360px;
+  //top: 120px;
+  top: 9rem;
+  width: 14rem;
+  height: 100%;
+  background-color: $grey;
+  border: 1px solid black;
+  box-shadow: 0px 0px 5px $glow, 0px 0px 5px $glow, 0px 0px 5px $glow;
+
+  @media only screen and (max-width: 100rem) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
+  }
+
+  transition: all 0.4s ease;
+
+  header {
+    font-size: 1.3vw;
+    color: $glow;
+    text-align: center;
+    line-height: 60px;
+    background-color: $grey - 20;
+    user-select: none;
+    //background-image: linear-gradient(black 1%, $grey 50%, black 99%);
+    background-image: linear-gradient(
+      black,
+      $grey 25%,
+      $l-grey 50%,
+      $grey 75%,
+      black 99%
+    );
+    box-sizing: border-box;
+    border-bottom: 4px outset $glow;
+  }
+
+  .ul {
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      line-height: 57px;
+      //font-size: 24px;
+      font-size: 1.2vw;
+      text-align: left;
+      color: white;
+      text-decoration: none;
+      //margin-left :1rem;
+      padding-left: 15px;
+      box-sizing: border-box;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid black;
+      transition: 0.4s;
+    }
+  }
+  .lul{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    //scroll-behavior: smooth;
+    /* width */
+    ::-webkit-scrollbar {
+      width: 20px;
+    }
+
+    //   /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px yellow;
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: $glow;
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: blue;
+    }
+  }
+}
+
+
+header:hover {
+  background-color: linear-gradient($grey 25%, $l-grey 50%, $grey 75%);
+  text-shadow: 0px 0px 20px $glow, 2.5px 2.5px 40px $glow,
+    2.5px 2.5px 80px $glow;
+  box-shadow: 0px 0px 5px $glow, 0px 0px 5px $glow, 0px 0px 5px $glow;
+  // text-shadow: 0px 0px 20px white, 2.5px 2.5px 40px white, 2.5px 2.5px 80px white;
+  //color :rgb(49, 116, 49);
+}
+
+.ul a:hover {
+  color: white;
+  background-color: $d-grey;
+  text-shadow: 0px 0px 20px $glow, 5px 5px 40px $glow, 5px 5px 80px $glow;
+}
+
+.ul div:hover {
+  padding-left: 7px;
+}
+
+#check {
+  display: none;
+}
+
+label #btn,
+label #cancel {
+  position: absolute;
+  cursor: pointer;
+  background-color: black;
+  color: $glow;
+}
+.nav_sign {
+  width: 60px;
+  padding: auto;
+}
+label #btn {
+  left: 4px;
+  top: 4.5px;
+  width: 50px;
+  height: 100%;
+  font-size: 35px;
+  margin: 0px 5px;
+  padding: 12px 12px;
+  transition: all 0.5s ease;
+  opacity: 100%;
+  display: block;
+}
+
+label #cancel {
+  z-index: 1111;
+  left: 195px;
+  top: 9.8rem;
+  font-size: 30px;
+  padding: 4px 9px;
+  transition: all 0.5s ease;
+  opacity: 0%;
+
+  @media only screen and (max-width: 100rem) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
+  }
+}
+
+#check:checked ~ .sidebar {
+  left: 0px;
+}
+
+#check:checked ~ label #btn {
+  background-color: black;
+  color: $glow;
+  pointer-events: none;
+}
+
+#check:checked ~ label #cancel {
+  left: 195px;
+  opacity: 100%;
+}
+
+#check:hover {
+  color: black;
+  background-color: $glow;
+}
+
+
+
+
+.contain {
+  position: fixed;
+  top: 0px;
+}
+
+.nav {
+  width: 100%;
+  border: 2px solid black;
+  justify-content: center - 3px;
+  padding-left: 70px;
+  font-size: large;
+  text-align: center;
+  vertical-align: middle;
+  //background-image: linear-gradient($glow, $grey 5%, $glow);
+  background-image: linear-gradient(black, $grey 5%, black);
+  
+}
+
+.nav:hover {
+  color: rgba(209, 246, 194, 0.938);
+  text-shadow: 0px 0px 10px $glow, 0px 0px 40px $glow, 0px 0px 80px $glow;
+}
+
+.nav:active {
+  color: $glow;
+  text-shadow: 0px 0px 90px $glow, 0px 0px 90px $glow, 0px 0px 90px $glow;
+}
+
+// the body
+.presenters {
+  font-family: "Times New Roman", "Stencil", Times, serif;
+  display: inline;
+  flex-direction: row;
+  position: fixed;
+  left: 15rem;
+  top: 9rem;
+  //padding-top : 2rem;
+  //width :870px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: $d-grey;
+  border: 2px solid $glow;
+  box-shadow: 0px 0px 5px $glow, 0px 0px 5px $glow, 0px 0px 5px $glow;
+
+  h3 {
+    padding: 2rem;
+    text-align: center;
+  }
+}
+
+.sub {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 95%;
+  height: 100%;
+  max-height: unset;
+  position: relative;
+  padding: 0px;
+  justify-content: center;
+  text-align: start;
+  margin: 20px 25px;
+  box-shadow: 0px 0px 10px $glow, 0px 0px 10px $glow, 0px 0px 10px $glow;
+}
+
+.free {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: start;
+  background-color: black;
+  color: $glow;
+  align-items: flex-start;
+  border: 2px solid black;
+  width: 830px;
+  height: 800px;
+  float: left;
+  padding: 10px 5px 5px 10px;
+  margin: 20px 25px;
+
+  //background-image: linear-gradient(rgb(0, 0, 0),rgb(100,0,150),rgb(139, 4, 250));
+}
+
+.course {
+  width: 100%;
+  border: 2px solid black;
+  justify-content: center;
+  padding: auto;
+  vertical-align: middle;
+  background-image: linear-gradient(black, $grey 5%, black);
+  padding: 10px, 10px;
+  list-style-type: none; /* Remove bullets */
+}
+
+.course:hover {
+  color: white;
+  text-shadow: 0px 0px 10px $glow, 0px 0px 40px $glow, 0px 0px 80px $glow;
+}
+
+.course:active {
+  color: $glow;
+  text-shadow: 0px 0px 90px $glow, 0px 0px 90px $glow, 0px 0px 90px $glow;
+}
+
+.coursed {
+  width: 100%;
+  border: 2px solid black;
+  justify-content: center;
+  padding: auto;
+  vertical-align: middle;
+  background-image: linear-gradient(black, $grey 5%, black);
+  padding: 10px, 10px;
+  list-style-type: none; /* Remove bullets */
+}
+
+.coursed:hover {
+  color: white;
+  text-shadow: 0px 0px 10px red, 0px 0px 40px red, 0px 0px 80px red;
+}
+
+.sth {
+  background-color: rgb(46, 46, 46);
+  border: 1px solid rgb(0, 0, 0);
+  height: 250px;
+  top: 1400px;
+  left: 260px;
+  font-family: "Times New Roman", "Stencil", Times, serif;
+  display: inline-flex;
+  flex-direction: row;
+  position: fixed;
+  justify-content: left;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding-left: 25px;
+  width: 830px;
+  background-image: linear-gradient(-90deg, grey, rgb(0, 0, 0));
+  max-height: unset;
+  align-content: center;
+  text-align: center;
+  padding: 5px;
+  color: white;
+}
+.all {
+  overflow-y: scroll;
+  /* width */
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  // //   /* Track */
+  // ::-webkit-scrollbar-track {
+  //   box-shadow: inset 0 0 5px $d-grey;
+  //   border-radius: 10px;
+  // }
+
+  // /* Handle */
+  // ::-webkit-scrollbar-thumb {
+  //   background: red;
+  //   border-radius: 10px;
+  // }
+
+  // /* Handle on hover */
+  // ::-webkit-scrollbar-thumb:hover {
+  //   background: #b30000;
+  // }
+}
+// html{
+//   //background-color: red;
+//   //overflow: visible;
+//   /* width */
+// ::-webkit-scrollbar {
+//   width: 20px;
+// }
+
+// /* Track */
+// ::-webkit-scrollbar-track {
+//   box-shadow: inset 0 0 5px black; 
+//   border-radius: 10px;
+// }
+ 
+// /* Handle */
+// ::-webkit-scrollbar-thumb {
+//   background: $glow; 
+//   border-radius: 10px;
+// }
+
+// /* Handle on hover */
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #b30000; 
+// }
+// }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px black; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $glow; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $glow-active; 
+  }
